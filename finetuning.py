@@ -28,7 +28,7 @@ class CustomLoss(torch.nn.Module):
         if most_probable_token_id == desired_token_id:
             return torch.tensor(0.0, requires_grad=True)
         else:
-            return default_loss*10
+            return default_loss
 
 
 def evaluate(before, model, tokenizer):
@@ -85,6 +85,6 @@ def finetuning(gpt2, epochs, learning_rate):
 
 
 if __name__ == '__main__':
-    finetuning(gpt2=True, epochs=10, learning_rate=0.05)
+    finetuning(gpt2=True, epochs=100, learning_rate=1e-4)
     print("---------------------------------------------------")
-    finetuning(gpt2=False, epochs=10, learning_rate=0.05)
+    finetuning(gpt2=False, epochs=100, learning_rate=1e-4)
